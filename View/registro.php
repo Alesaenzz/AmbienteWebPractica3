@@ -61,10 +61,10 @@
                                         </div>
                                     </div>
 
-                                    <Label>Saldo</Label>
+                                    <Label>Abono</Label>
                                     <div class="input-group mb-3">
-                                        <input id="txtPrecio" name="txtSaldo" type="text" class="form-control"
-                                            placeholder="Saldo" required value=""
+                                        <input id="txtAbono" name="txtAbono" type="text" class="form-control"
+                                            placeholder="Abono" required value=""
                                             onkeypress="return SoloMontos(event, this)">
                                         <div class="input-group-append">
                                             <div class="input-group-text">

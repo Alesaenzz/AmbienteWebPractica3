@@ -23,7 +23,7 @@
     if(isset($_POST["btnRegistrarPago"]))
     {
         $descripcion = $_POST[""];
-        $abono = $_POST["txtModelo"];
+        $abono = $_POST["txtAbono"];
         $Precio = $_POST["txtPrecio"];
      
 
