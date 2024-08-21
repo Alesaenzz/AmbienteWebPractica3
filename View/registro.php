@@ -49,7 +49,7 @@ HeadCSS();
 
                                             <label>Saldo Anterior</label>
                                             <div class="input-group mb-3">
-                                                <input id="txtSaldoAnterior" name="txtSaldoAnterior" type="text" class="form-control" read Only>
+                                                <input id="txtSaldoAnterior" name="txtSaldoAnterior" type="text" class="form-control" readonly>
                                             </div>
 
                                             <label>Abono</label>
@@ -74,8 +74,14 @@ HeadCSS();
             <strong>Copyright &copy; 2024 </strong>
         </footer>
 
-        <aside class="control-sidebar control-sidebar-dark"></aside>
+        <aside class="control-sidebar control-sidebar-dark">
+        </aside>
     </div>
+
+    <?php
+    HeadJS();
+    ?>
+
 </body>
 
 </html>
