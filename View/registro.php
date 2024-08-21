@@ -1,6 +1,7 @@
 <?php
 include_once 'layoutInterno.php';
-include_once '../Controller/RegistroController.php';
+include_once '../Controller/registroController.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -42,14 +43,13 @@ HeadCSS();
                                             <label>Compra</label>
                                             <div class="input-group mb-3">
                                                 <select id="cod_compra" name="cod_compra" class="form-control">
-                                                    <option value="">Seleccione una compra pendiente</option>
                                                     <?php ConsultarComprasPendientes(); ?>
                                                 </select>
                                             </div>
 
                                             <label>Saldo Anterior</label>
                                             <div class="input-group mb-3">
-                                                <input id="txtSaldoAnterior" name="txtSaldoAnterior" type="text" class="form-control" readonly>
+                                                <input id="txtSaldoAnterior" name="txtSaldoAnterior" type="text" class="form-control" read Only>
                                             </div>
 
                                             <label>Abono</label>

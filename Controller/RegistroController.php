@@ -8,10 +8,10 @@ if(session_status() === PHP_SESSION_NONE) {
 
 function ConsultarComprasPendientes() {
     $respuesta = ConsultarComprasPendientesBD();
-
+    echo '<option value=""> Seleccione una compra pendiente </option>';
     if($respuesta && $respuesta->num_rows > 0) {
         while ($row = mysqli_fetch_array($respuesta)) {
-            echo "<option value='" . $row["cod_compra"] . "'>Producto #" . $row["cod_compra"] . " - " . $row["descripcion"] . " Saldo: " . number_format($row["saldo"], 2) . "</option>";
+            echo "<option value=" . $row["cod_compra"] . ">Producto #" . $row["cod_compra"] . " - " . $row["descripcion"] . " Saldo: " . number_format($row["saldo"], 2) . "</option>";
         }
     }
 }
