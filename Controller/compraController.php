@@ -1,4 +1,5 @@
-<?php include_once '../Model/compraModel.php';
+<?php 
+include_once '../Model/compraModel.php';
 
 function ConsultarCompras()
 {
@@ -17,9 +18,3 @@ function ConsultarCompras()
     }
 }
 ?>
-
-
-
-
-
-

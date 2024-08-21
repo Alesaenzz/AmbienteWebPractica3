@@ -1,13 +1,18 @@
 <?php include_once 'baseDatosModel.php';
 
-    function PagoParcial($cod_abono,$abono,$cod_compra,$precio,$descripcion,$estado)
-    {
-        $conexion = AbrirBaseDatos();
-        $sentencia = "CALL PagoParcial('$cod_abono','$abono','$cod_compra','$precio','$descripcion','$estado')";
-        $respuesta = $conexion -> query($sentencia);
-        CerrarBaseDatos($conexion);
+function RealizarAbonoBD($cod_compra, $abono) {
+    $conexion = AbrirBaseDatos();
+    $sentencia = "CALL RegistrarAbono('$cod_compra', '$abono')";
+    $respuesta = $conexion->query($sentencia);
+    CerrarBaseDatos($conexion);
+    return $respuesta;
+}
 
-        return $respuesta;
-    }
-
+function ConsultarComprasPendientesBD() {
+    $conexion = AbrirBaseDatos();
+    $sentencia = "CALL ConsultarComprasPendientes()";
+    $respuesta = $conexion->query($sentencia);
+    CerrarBaseDatos($conexion);
+    return $respuesta;
+}
 ?>

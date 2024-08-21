@@ -1,44 +1,43 @@
-<?php include_once '../Model/RegistroModel.php';
+<?php 
+include_once '../Model/RegistroModel.php';
+include_once '../Model/compraModel.php';
 
-    if(session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    function ConsultarAbono()
-    {
-        $respuesta = ConsultarAbonoBD();
-       
-        if($respuesta -> num_rows > 0)
-        {
-            while ($row = mysqli_fetch_array($respuesta))
-            { 
-                echo "<tr>";
-                echo "<td>" . $row["descripcion"] . "</td>";
-                echo "<td>" . number_format($row["abono"],2) . "</td>";                
-                echo "<td>" . $row["cod_compra"] . "</td>";
-                echo "</tr>";
-            }
+function ConsultarComprasPendientes() {
+    $respuesta = ConsultarComprasPendientesBD();
+
+    if($respuesta && $respuesta->num_rows > 0) {
+        while ($row = mysqli_fetch_array($respuesta)) {
+            echo "<option value='" . $row["cod_compra"] . "'>Producto #" . $row["cod_compra"] . " - " . $row["descripcion"] . " Saldo: " . number_format($row["saldo"], 2) . "</option>";
         }
     }
-    if(isset($_POST["btnRegistrarPago"]))
-    {
-        $descripcion = $_POST[""];
-        $abono = $_POST["txtAbono"];
-        $Precio = $_POST["txtPrecio"];
-     
+}
 
-        $respuesta = RealizarAbono($abono,$precio); //($cod_compra,$cod_abono);
+if(isset($_POST["btnRegistrarAbono"])) {
+    $cod_compra = $_POST["cod_compra"];
+    $abono = $_POST["txtAbono"];
+    
+    $conexion = AbrirBaseDatos();
+    $sentencia = "SELECT saldo FROM principal WHERE cod_compra = '$cod_compra'";
+    $resultado = $conexion->query($sentencia);
+    $row = $resultado->fetch_assoc();
+    $saldo_anterior = $row["saldo"];
+    CerrarBaseDatos($conexion);
 
-        if($respuesta == true)
-        {
-            #set($estado = "CANCELADO");
-            header("location: ../View/consulta.php");
-        } 
-        else
-        {
-            $_POST["msj"] = "El abono no se ha completado correctamente.";
+    if($abono <= $saldo_anterior) {
+        $respuesta = RealizarAbonoBD($cod_compra, $abono);
+
+        if($respuesta) {
+            header("Location: ../View/consulta.php");
+            exit();
+        } else {
+            $mensaje = "El abono no se ha completado correctamente.";
         }
+    } else {
+        $mensaje = "El abono no puede ser mayor que el saldo.";
     }
-
-
+}
 ?>

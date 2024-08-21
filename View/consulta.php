@@ -1,21 +1,21 @@
-<?php   include_once 'layoutInterno.php';
-        include_once '../Controller/compraController.php';
-      
+<?php
+include_once 'layoutInterno.php';
+include_once '../Controller/compraController.php';
 ?>
 
 <!DOCTYPE html>
 <html>
 
-<?php 
-    HeadCSS();
+<?php
+HeadCSS();
 ?>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
-        <?php 
-          MostrarNav();
-          MostrarMenu();
+        <?php
+        MostrarNav();
+        MostrarMenu();
         ?>
 
         <div class="content-wrapper">
@@ -25,16 +25,15 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-12">
-                                <h1 class="m-0 text-dark">Consulta de compras</h1>
-                                <br/>
+                                <h1 class="m-0 text-dark">Consulta de Compras</h1>
+                                <br />
 
                                 <?php
-                                    if(isset($_POST["msj"]))
-                                    {
-                                        echo '<div class="alert alert-info TextoCentrado">' . $_POST["msj"] . '</div>';
-                                    }
+                                if (isset($_POST["msj"])) {
+                                    echo '<div class="alert alert-info TextoCentrado">' . $_POST["msj"] . '</div>';
+                                }
                                 ?>
-                                <br/>
+                                <br />
 
                                 <table id="tablaCompras" class="table table-bordered">
                                     <thead>
@@ -48,12 +47,10 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                            ConsultarCompras();
+                                        ConsultarCompras();
                                         ?>
                                     </tbody>
                                 </table>
-
-
                             </div>
                         </div>
                     </div>
@@ -69,9 +66,10 @@
         </aside>
     </div>
 
-    <?php 
-        HeadJS();
+    <?php
+    HeadJS();
     ?>
-    
+
 </body>
+
 </html>

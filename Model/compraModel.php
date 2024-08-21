@@ -1,8 +1,6 @@
 <?php include_once 'baseDatosModel.php';
 
-
-function ConsultarCompraBD()  
-{
+function ConsultarCompraBD() {
     $conexion = AbrirBaseDatos();
     $sentencia = "CALL ConsultarCompras()"; 
     $respuesta = $conexion->query($sentencia);
